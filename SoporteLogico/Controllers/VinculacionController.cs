@@ -28,9 +28,22 @@ namespace SoporteLogico.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Crear(Vinculacion vinculacion)
         {
-            _db.Vinculacion.Add(vinculacion);
-            _db.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            Empleado empleado = null;
+            foreach (var item in _db.Empleado)
+            {
+                if (vinculacion.IdEmpleado_Vinculacion == item.IdEmpleado)
+                {
+                    empleado = item;
+                } 
+            }
+            if(empleado != null)
+            {
+                _db.Vinculacion.Add(vinculacion);
+                _db.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return RedirectToAction(nameof(Crear));
+
         }
 
         public IActionResult Vinculaciones(int id)
@@ -38,8 +51,5 @@ namespace SoporteLogico.Controllers
             IEnumerable<Vinculacion> lista = from Vinculacion in _db.Vinculacion where Vinculacion.IdEmpleado_Vinculacion == id select Vinculacion;
             return View(lista);
         }
-
-
-
     }
 }
