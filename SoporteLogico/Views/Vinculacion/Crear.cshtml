@@ -1,0 +1,63 @@
+﻿@model SoporteLogico.Models.Vinculacion
+@{
+    ViewData["Title"] = "Crear";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Crear">
+    <div class="border p-3">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">NUEVO EMPLEADO</h2>
+        </div>
+
+         <div class="container">
+             <div class="row">
+                 <div class="col md-6">
+                     <label asp-for="IdEmpleado_Vinculacion" class="form-label">IdEmpleado_Vinculacion</label>
+                     <input asp-for="IdEmpleado_Vinculacion" class="form-control"/>
+                     <span asp-validation-for="IdEmpleado_Vinculacion" class="text-danger"></span>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col md-6">
+                     <label asp-for="FechaIngreso" class="form-label">FechaIngreso</label>
+                     <input asp-for="FechaIngreso" class="form-control"/>
+                     <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col md-6">
+                     <label asp-for="IdCargo" class="form-label">IdCargo</label>
+                     <input asp-for="IdCargo" class="form-control"/>
+                     <span asp-validation-for="IdCargo" class="text-danger"></span>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col md-6">
+                     <label asp-for="FechaRetiro" class="form-label">FechaRetiro</label>
+                     <input asp-for="FechaRetiro" class="form-control"/>
+                     <span asp-validation-for="FechaRetiro" class="text-danger"></span>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col md-6">
+                     <label asp-for="FechaRegistro" class="form-label">FechaRegistro</label>
+                     <input asp-for="FechaRegistro" class="form-control"/>
+                     <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+                 </div>
+             </div>
+             <br />
+             <div class="d-grid gap-2 d-md-block">
+                 <button type="submit" class="btn btn-primary">Crear Nueva</button>
+                 <a asp-controller="Empleado" asp-action="Index" class="btn btn-success">Regresar</a>
+
+             </div>
+         </div>
+    </div>
+
+</form>

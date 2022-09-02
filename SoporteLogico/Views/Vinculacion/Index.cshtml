@@ -1,0 +1,80 @@
+﻿@model IEnumerable<SoporteLogico.Models.Empleado>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">LISTA DE EMPLEADOS</h2>
+        </div>
+        <div class="col-6" text-end>
+            <a asp-controller="Empleado" asp-action="Crear" class="btn btn-primary">+ Agregar Empleado</a>
+        </div>
+        <div class="col-6" text-end>
+            <a asp-controller="Vinculacion" asp-action="Crear" class="btn btn-primary">+ Agregar Vinculacion</a>
+        </div>
+
+    </div>
+    <br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                     <th>
+                        ID
+                    </th>
+                    <th>
+                        NOMBRES
+                    </th>
+                    <th>
+                        APELLIDOS
+                    </th>
+                    <th>
+                        DIRECCION
+                    </th>
+                     <th>
+                        EMAIL
+                    </th>
+                     <th>
+                        ID GENERO
+                    </th>
+                     <th>
+                        ID CIUDAD
+                    </th>
+                    <th>
+                        VINCULACIONES
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <th width="20%">@item.IdEmpleado</th>
+                        <th width="20%">@item.Nombre</th>
+                        <th width="20%">@item.Apellido</th>
+                        <th width="20%">@item.Direccion</th>
+                        <th width="20%">@item.Email</th>
+                        <th width="20%">@item.IdGenero</th>
+                        <th width="20%">@item.IdCiudad</th>
+                        <th class="text-center">
+                        <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Vinculacion" asp-action="Vinculaciones" asp-route-Id=@item.IdEmpleado class="btn btn-primary mx-2">Vinculaciones</a>
+                        </div>
+              
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>NO NAY REGISTROS EN LA BASE DE DATOS...</p>
+    }
+
+
+</div>

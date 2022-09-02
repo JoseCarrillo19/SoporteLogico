@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SoporteLogico.Models.Vinculacion>
+@{
+    ViewData["Title"] = "Vinculaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">LISTA DE VINCULACIONES</h2>
+        </div>
+    </div>
+    <br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                     <th>
+                        ID DEL EMPLEADO
+                    </th>
+                    <th>
+                        ID VINCULACION
+                    </th>
+                    <th>
+                        FECHA REGISTRO
+                    </th>
+                    <th>
+                        FECHA INGRESO
+                    </th>
+                     <th>
+                        FECHA RETIRO
+                    </th>
+                     <th>
+                        ICARGO
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <th width="20%">@item.IdEmpleado_Vinculacion</th>
+                        <th width="20%">@item.IdVinculacion</th>
+                        <th width="20%">@item.FechaRegistro</th>
+                        <th width="20%">@item.FechaIngreso</th>
+                        <th width="20%">@item.FechaRetiro</th>
+                        <th width="20%">@item.IdCargo</th>
+
+                        <th class="text-center">              
+                    </tr>
+                }
+                <a asp-controller="Empleado" asp-action="Index" class="btn btn-success">Regresar</a>
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>NO NAY REGISTROS EN LA BASE DE DATOS...</p>
+    }
+
+
+</div>
